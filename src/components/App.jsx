@@ -22,6 +22,13 @@ class App extends Component{
     ...INITIAL_STATE
   };
 
+  componentDidMount() {     
+    const savingUsersContact = JSON.parse(localStorage.getItem("usersContact"));
+    if (savingUsersContact) {   
+      this.setState({ contacts: savingUsersContact });
+    }
+  }
+
   heandleOnFilter = evt => {
     const { value } = evt.target;      
     this.setState({ filter: value });
@@ -66,6 +73,13 @@ class App extends Component{
     const updateUsersList = contacts.filter(contact => contact.id !== id);
     this.setState({ contacts: [...updateUsersList] });    
   }
+
+  componentDidUpdate(prevState) {       
+    const { contacts } = this.state;
+    if (prevState.contacts !== contacts) {
+      localStorage.setItem("usersContact", JSON.stringify(contacts));
+    }
+  }
   
   render() {
     const { filter } = this.state;  
@@ -83,3 +97,8 @@ class App extends Component{
 }
 
 export default App;
+
+/**
+ * Під час додавання та видалення контакту контакти зберігаються у локальне сховище.
+ * Під час завантаження застосунку контакти, якщо такі є, зчитуються з локального сховища і записуються у стан.
+ */
