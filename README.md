@@ -1,4 +1,4 @@
-# React Homework - 2 - PhoneBook
+# React Homework - 3 - PhoneBook
 
 To your attention, an application for saving phone numbers - Hogwarts Magical Phonebook.
 
@@ -8,6 +8,7 @@ To your attention, an application for saving phone numbers - Hogwarts Magical Ph
 `«Javascript»`
 `«React Icons / library»`
 `«Emotion / library»`
+`«LocalStorage»`
 `«prop-types / npm»`
 
 Used assembly: [React project template](https://github.com/goitacademy/react-homework-template#readme)
@@ -25,6 +26,9 @@ A list of all phonebook contacts.
 
 You cannot add users with the same name or phone number.
 ![duplicate](./assets/duplicate.png)
+
+After restarting the application, all contacts will remain in place!
+![restart](./assets/contacts_list_reboot.png)
 
 And you can also delete a contact using the magic button!
 ![delete](./assets/delete_btn.png)
