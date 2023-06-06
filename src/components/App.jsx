@@ -29,6 +29,12 @@ class App extends Component{
     }
   }
 
+  componentDidUpdate(_, prevState) { 
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem("usersContact", JSON.stringify(this.state.contacts));
+    }
+  }
+
   heandleOnFilter = evt => {
     const { value } = evt.target;      
     this.setState({ filter: value });
@@ -72,12 +78,6 @@ class App extends Component{
     const { contacts } = this.state;
     const updateUsersList = contacts.filter(contact => contact.id !== id);
     this.setState({ contacts: [...updateUsersList] });    
-  }
-
-  componentDidUpdate(prevState) { 
-    if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem("usersContact", JSON.stringify(this.state.contacts));
-    }
   }
   
   render() {
